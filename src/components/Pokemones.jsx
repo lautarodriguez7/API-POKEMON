@@ -15,7 +15,6 @@ const Pokemones = () => {
         <div>
             Lista de Pokemones
             <hr />
-
             {
                 pokemones.length === 0 && 
                 <button className="m-2" onClick={ () => dispatch(obtenerPokemonesAccion())}>Obtener Pokemones</button>
