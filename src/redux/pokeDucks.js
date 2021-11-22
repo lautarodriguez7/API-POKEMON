@@ -33,6 +33,13 @@ export default function pokeReducer(state = dataInicial, action) {
 
 export const unPokeDetalleAccion = (url = 'https://pokeapi.co/api/v2/pokemon/1/') => async (dispatch) => {
 
+    if(localStorage.getItem(url)){
+        dispatch({
+            type: POKE_INFO_EXITO,
+            payload: JSON.stringify(localStorage.getItem(url))
+        })
+    }
+
     try {
         const res = await axios.get(url)
         console.log(res.data)
@@ -45,6 +52,15 @@ export const unPokeDetalleAccion = (url = 'https://pokeapi.co/api/v2/pokemon/1/'
                 foto: res.data.sprites.front_default
             }
         })
+        localStorage.setItem(url, JSON.stringify({
+            type: POKE_INFO_EXITO,
+            payload: {
+                nombre: res.data.name,
+                ancho: res.data.weight,
+                alto: res.data.height,
+                foto: res.data.sprites.front_default
+            }
+        }))
     } catch (error) {
         console.log(error)
     }
@@ -66,7 +82,7 @@ export const obtenerPokemonesAccion = () => async (dispatch, getState) => {
 
     try {
         console.log('DATOS DESDE LA API')
-        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`);
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=10`);
         dispatch({
             type: OBTENER_POKEMONES_EXITO,
             payload: res.data

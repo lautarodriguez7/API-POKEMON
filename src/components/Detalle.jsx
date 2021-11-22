@@ -20,7 +20,7 @@ const Detalle = () => {
     return pokemon ?  (
         <div className="card mt-4 text-center">
             <div className="card-body">
-                <img src={pokemon.foto} className="img-fluid" />
+                <img src={pokemon.foto} className="img-fluid" alt="" />
                 <div className="card-title text-uppercase">{pokemon.nombre}</div>
                 <p classname="card-text">Alto: {pokemon.alto} | Ancho: {pokemon.ancho}</p>
             </div>

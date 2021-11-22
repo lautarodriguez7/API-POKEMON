@@ -12,6 +12,14 @@ const Pokemones = () => {
     const next = useSelector(store => store.pokemones.next)
     const previous = useSelector(store => store.pokemones.previous)
 
+    //PODEMOS AGREGAR DIRECTAMENTE LOS POKEMONES SIN APRETAR EL BOTON DE OBTENER POKEMONES CON ESTO
+    // React.useEffect(() => {
+    //     const fetchData = () => {
+    //         dispatch(obtenerPokemonesAccion())
+    //     }
+    //     fetchData()
+    //     },[dispatch])
+
     return (
         <div className="row">
             <div className="col-md-6">
